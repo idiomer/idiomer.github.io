@@ -70,6 +70,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-autohotkey-github解决markdownn一键贴图难题" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/01/autohotkey-github解决markdownn一键贴图难题/" class="article-date">
+  <time datetime="2019-02-01T08:52:13.000Z" itemprop="datePublished">2019-02-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/01/autohotkey-github解决markdownn一键贴图难题/">autohotkey+github解决markdownn一键贴图难题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><p><a href="https://github.com/wanglong001/ClipMd" target="_blank" rel="noopener">https://github.com/wanglong001/ClipMd</a></p>
+<p>参考上述git项目</p>
+<ol>
+<li>先下载安装autohotkey</li>
+<li>建立自己的hexo项目</li>
+<li>配置clipMd，这里做了如下修改<ol>
+<li>PicPath不是放在原项目作者认为的theme/目录里面，因为每个theme的images子目录不一定一样，所以切换主题的时候会出问题，需要重新配置，比较麻烦。所以直接放在了resource/目录下</li>
+<li>由于第1点的修改，所以httpPath也要相应地修改成<code>https://raw.githubusercontent.com/${your_git_name}/${your_git_name}.github.io/master/images/</code>；其实不修改也没问题，但是如果绑了自己的域名会有问题，所以建议改成这样。</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 你的github在你系统的根目录，也就是hexo项目</span></span><br><span class="line">hexoPath := "C:/Users/tt/Documents/blog/"</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接放在source/images/下面，和主题无关(记得建目录images/)</span></span><br><span class="line">PicPath := hexoPath . "source/images/" </span><br><span class="line"></span><br><span class="line"><span class="comment"># 图片的格式</span></span><br><span class="line">imageFormat := "png"</span><br><span class="line"></span><br><span class="line"><span class="comment"># 图片的命名根式 这里使用时间的格式</span></span><br><span class="line">filenameFormat := "yyyyMMdd_HHmmss"</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上传后图片链接地址</span></span><br><span class="line">httpPath := "https://raw.githubusercontent.com/idiomer/idiomer.github.io/master/images/"</span><br><span class="line"></span><br><span class="line"><span class="comment"># 每次生成图片时 是否每次都上传图片 默认是False 不推荐True </span></span><br><span class="line">isPushWhenSave := false</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://idiomer.github.io/2019/02/01/autohotkey-github解决markdownn一键贴图难题/" data-id="cjrltw7dg000768v8vxbhfuuq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Hexo迁移" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/01/Hexo迁移/" class="article-date">
@@ -112,12 +159,12 @@
 <li><a href="https://blog.csdn.net/eternity1118_/article/details/71194395?ref=myread" target="_blank" rel="noopener">https://blog.csdn.net/eternity1118_/article/details/71194395?ref=myread</a></li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/idiomer/idiomer.github.io/master/images/20190201_160658.png" alt="image"></p>
-<p><img src="https://raw.githubusercontent.com/idiomer/idiomer.github.io/master/images/20190201_162315.png" alt="image"></p>
+<p><img src="https://raw.githubusercontent.com/idiomer/idiomer.github.io/master/images/20190201_162315.png" alt="df"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://idiomer.github.io/2019/02/01/Hexo迁移/" data-id="cjrls7eey0001lgv8qebnn8a1" class="article-share-link">Share</a>
+      <a data-url="http://idiomer.github.io/2019/02/01/Hexo迁移/" data-id="cjrltw7d6000168v82t67sgy2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -166,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://idiomer.github.io/2019/02/01/Hexo on Windows/" data-id="cjrls7eeq0000lgv88tkxjnc3" class="article-share-link">Share</a>
+      <a data-url="http://idiomer.github.io/2019/02/01/Hexo on Windows/" data-id="cjrltw7cy000068v85744cprd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -285,7 +332,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://idiomer.github.io/2017/03/19/hexo博客搭建-ubuntu/" data-id="cjrls7ef50005lgv83p1coloi" class="article-share-link">Share</a>
+      <a data-url="http://idiomer.github.io/2017/03/19/hexo博客搭建-ubuntu/" data-id="cjrltw7de000568v894k8cs2s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -342,7 +389,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://idiomer.github.io/2017/03/18/What-is-github-pages/" data-id="cjrls7ef30003lgv8od4il0k1" class="article-share-link">Share</a>
+      <a data-url="http://idiomer.github.io/2017/03/18/What-is-github-pages/" data-id="cjrltw7dc000468v8euq48fzd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
@@ -389,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://idiomer.github.io/2017/03/18/hello-world/" data-id="cjrls7ef40004lgv8q2r76dds" class="article-share-link">Share</a>
+      <a data-url="http://idiomer.github.io/2017/03/18/hello-world/" data-id="cjrltw7db000368v8tm9xzmlh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -444,6 +491,10 @@
       <ul>
         
           <li>
+            <a href="/2019/02/01/autohotkey-github解决markdownn一键贴图难题/">autohotkey+github解决markdownn一键贴图难题</a>
+          </li>
+        
+          <li>
             <a href="/2019/02/01/Hexo迁移/">Hexo迁移</a>
           </li>
         
@@ -457,10 +508,6 @@
         
           <li>
             <a href="/2017/03/18/What-is-github-pages/">What is github pages?</a>
-          </li>
-        
-          <li>
-            <a href="/2017/03/18/hello-world/">Hello World</a>
           </li>
         
       </ul>
