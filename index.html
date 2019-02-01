@@ -62,6 +62,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Hexo迁移" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/01/Hexo迁移/" class="article-date">
+  <time datetime="2019-02-01T07:17:52.000Z" itemprop="datePublished">2019-02-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/01/Hexo迁移/">Hexo迁移</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Hexo迁移"><a href="#Hexo迁移" class="headerlink" title="Hexo迁移"></a>Hexo迁移</h1><p>当换电脑或者多设备编辑时，需要部署两个或多个hexo，怎么保持同步呢？</p>
+<ol>
+<li>在新设备上按hexo教程初始化一个hexo目录<ol>
+<li>hexo init</li>
+<li>npm install</li>
+<li>npm install hexo-deployer-git –save </li>
+</ol>
+</li>
+<li>将旧项目的_config.yml 和 source/ 和scaffolds/ 和themes/ 替换新项目的相应位置即可</li>
+<li>正常写作，并生成部署<ol>
+<li>hexo new post “title”</li>
+<li>hexo g</li>
+<li>hexo deploy</li>
+</ol>
+</li>
+</ol>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><a href="https://blog.csdn.net/eternity1118_/article/details/71194395?ref=myread" target="_blank" rel="noopener">https://blog.csdn.net/eternity1118_/article/details/71194395?ref=myread</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://idiomer.github.io/2019/02/01/Hexo迁移/" data-id="cjrlqc38b0001mwv8y9r86b7e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Hexo on Windows" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/02/01/Hexo on Windows/" class="article-date">
@@ -99,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://idiomer.github.io/2019/02/01/Hexo on Windows/" data-id="cjrlpov9b0000z8v83n05i2c0" class="article-share-link">Share</a>
+      <a data-url="http://idiomer.github.io/2019/02/01/Hexo on Windows/" data-id="cjrlqc3830000mwv8uzqs5nor" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -152,7 +209,7 @@
 </li>
 </ul>
 <h2 id="1-hexo"><a href="#1-hexo" class="headerlink" title="1. hexo"></a>1. hexo</h2><h3 id="1-1-初始化博客"><a href="#1-1-初始化博客" class="headerlink" title="1.1 初始化博客"></a>1.1 <a href="https://hexo.io/docs/setup.html" target="_blank" rel="noopener">初始化博客</a></h3><p>hexo初始化博客</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir blog/ <span class="comment">#创建blog目录，存放关于博客的所有一切</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> blog/</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo init  <span class="comment"># hexo初始化blog目录，</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> mkdir blog/ #创建blog目录，存放关于博客的所有一切</span><br><span class="line"><span class="meta">$</span> cd blog/</span><br><span class="line"><span class="meta">$</span> hexo init  # hexo初始化blog目录，</span><br><span class="line"><span class="meta">$</span> npm install</span><br></pre></td></tr></table></figure>
 <p>以上就构建好了专属自己的博客，直接运行<code>hexo server</code>就能在本地4000端口查看到自己的博客，里面有一篇默认的hello world博文。</p>
 <h3 id="1-2-博客目录详解"><a href="#1-2-博客目录详解" class="headerlink" title="1.2 博客目录详解"></a>1.2 博客目录详解</h3><p>详细地，在运行<code>hexo init</code>时，blog目录从一个空文件夹变成了具有如下结构的目录：</p>
 <p>.<br>├── _config.yml<br>├── package.json<br>├── scaffolds<br>├── source<br>|   ├── _drafts<br>|   └── _posts<br>└── themes</p>
@@ -218,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://idiomer.github.io/2017/03/19/hexo博客搭建-ubuntu/" data-id="cjrlpova0000bz8v87y235ljb" class="article-share-link">Share</a>
+      <a data-url="http://idiomer.github.io/2017/03/19/hexo博客搭建-ubuntu/" data-id="cjrlqc38j0004mwv8yhe9vkx1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -275,7 +332,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://idiomer.github.io/2017/03/18/What-is-github-pages/" data-id="cjrlpov9g0001z8v83tcdgw1q" class="article-share-link">Share</a>
+      <a data-url="http://idiomer.github.io/2017/03/18/What-is-github-pages/" data-id="cjrlqc38h0003mwv8gyyu5w0n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
@@ -322,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://idiomer.github.io/2017/03/18/hello-world/" data-id="cjrlpov9k0003z8v8jxg0oc53" class="article-share-link">Share</a>
+      <a data-url="http://idiomer.github.io/2017/03/18/hello-world/" data-id="cjrlqc38k0005mwv8vdljq5zw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -355,7 +412,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a>
+      <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a>
     </div>
   </div>
 
@@ -375,6 +432,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/02/01/Hexo迁移/">Hexo迁移</a>
+          </li>
         
           <li>
             <a href="/2019/02/01/Hexo on Windows/">Hexo on Windows</a>
