@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>hexo博客搭建-ubuntu | Start It</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="hexo是什么？ 简言之，可以认为hexo是一个markdown –&amp;gt; html转换器。 0.准备hexo的安装依赖于git和nodejs，因此安装hexo之前，需要安装git和nodejs，最后才安装hexo  安装git sudo apt-get install git-core    安装nodejs：用npm安装nodejs(ps: npm是nodejs的包管理工具) curl ht">
+<meta name="keywords" content="hexo,blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo博客搭建-ubuntu">
+<meta property="og:url" content="http://idiomer.github.io/2019/02/01/hexo博客搭建-ubuntu/index.html">
+<meta property="og:site_name" content="Start It">
+<meta property="og:description" content="hexo是什么？ 简言之，可以认为hexo是一个markdown –&amp;gt; html转换器。 0.准备hexo的安装依赖于git和nodejs，因此安装hexo之前，需要安装git和nodejs，最后才安装hexo  安装git sudo apt-get install git-core    安装nodejs：用npm安装nodejs(ps: npm是nodejs的包管理工具) curl ht">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-01T03:45:12.814Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo博客搭建-ubuntu">
+<meta name="twitter:description" content="hexo是什么？ 简言之，可以认为hexo是一个markdown –&amp;gt; html转换器。 0.准备hexo的安装依赖于git和nodejs，因此安装hexo之前，需要安装git和nodejs，最后才安装hexo  安装git sudo apt-get install git-core    安装nodejs：用npm安装nodejs(ps: npm是nodejs的包管理工具) curl ht">
+  
+    <link rel="alternate" href="/atom.xml" title="Start It" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Start It</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://idiomer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hexo博客搭建-ubuntu" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/01/hexo博客搭建-ubuntu/" class="article-date">
+  <time datetime="2019-02-01T06:48:58.346Z" itemprop="datePublished">2019-02-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo博客搭建-ubuntu
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>hexo是什么？</p>
+<p>简言之，可以认为hexo是一个markdown –&gt; html转换器。</p>
+<h2 id="0-准备"><a href="#0-准备" class="headerlink" title="0.准备"></a>0.准备</h2><p>hexo的安装依赖于git和nodejs，因此安装hexo之前，需要安装git和nodejs，最后才安装hexo</p>
+<ul>
+<li><p>安装git</p>
+<p><code>sudo apt-get install git-core</code></p>
+</li>
+</ul>
+<ul>
+<li><p>安装nodejs：用npm安装nodejs(ps: npm是nodejs的包管理工具)</p>
+<p><code>curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh</code></p>
+<p><code>nvm install stable</code></p>
+</li>
+<li><p>安装hexo</p>
+<p><code>npm install -g hexo-cli</code></p>
+<p>重启终端后，即可使用hexo命令。</p>
+</li>
+</ul>
+<h2 id="1-hexo"><a href="#1-hexo" class="headerlink" title="1. hexo"></a>1. hexo</h2><h3 id="1-1-初始化博客"><a href="#1-1-初始化博客" class="headerlink" title="1.1 初始化博客"></a>1.1 <a href="https://hexo.io/docs/setup.html" target="_blank" rel="noopener">初始化博客</a></h3><p>hexo初始化博客</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> mkdir blog/ <span class="comment">#创建blog目录，存放关于博客的所有一切</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> blog/</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo init  <span class="comment"># hexo初始化blog目录，</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install</span></span><br></pre></td></tr></table></figure>
+<p>以上就构建好了专属自己的博客，直接运行<code>hexo server</code>就能在本地4000端口查看到自己的博客，里面有一篇默认的hello world博文。</p>
+<h3 id="1-2-博客目录详解"><a href="#1-2-博客目录详解" class="headerlink" title="1.2 博客目录详解"></a>1.2 博客目录详解</h3><p>详细地，在运行<code>hexo init</code>时，blog目录从一个空文件夹变成了具有如下结构的目录：</p>
+<p>.<br>├── _config.yml<br>├── package.json<br>├── scaffolds<br>├── source<br>|   ├── _drafts<br>|   └── _posts<br>└── themes</p>
+<table>
+<thead>
+<tr>
+<th>文件/目录</th>
+<th>说明</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>_config.yml</td>
+<td>站点配置文件。绝大部分的配置选项都在这儿</td>
+<td>详见：<a href="https://hexo.io/docs/configuration.html" target="_blank" rel="noopener">configuration</a></td>
+</tr>
+<tr>
+<td>package.json</td>
+<td>好像是哪些插件或渲染器要安装的配置？</td>
+<td></td>
+</tr>
+<tr>
+<td>scaffolds/</td>
+<td>博文的layout布局模板</td>
+<td>draft、post、page三种模板。如<code>hexo new draft hexo-博客搭建-ubuntu</code>就能根据draft.md里的定义生成<code>hexo博客搭建-ubuntu.md</code>的草稿开始撰写。</td>
+</tr>
+<tr>
+<td>source/</td>
+<td>博文的源文件目录</td>
+<td>如：<code>hexo博客搭建-ubuntu.md</code>的草稿版本会在source/_draft/目录；如默认生成的post版本的<code>hello world.md</code>在source/_post/目录</td>
+</tr>
+<tr>
+<td>themes/</td>
+<td>博客的主题、样式、风格</td>
+<td></td>
+</tr>
+<tr>
+<td>public/*</td>
+<td>html,css,js等通过(hexo generate)生成的静态文件</td>
+<td>非初始化的子文件夹，以后执行<code>hexo generate</code>产生的</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-3-新增博文"><a href="#1-3-新增博文" class="headerlink" title="1.3 新增博文"></a>1.3 新增博文</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post &lt;postName&gt; #source/_post目录下会新生成&lt;postName&gt;.md，编辑即可</span><br></pre></td></tr></table></figure>
+<h3 id="1-4-部署"><a href="#1-4-部署" class="headerlink" title="1.4 部署"></a>1.4 部署</h3><p>前面提到执行<code>hexo server</code>即可在本地部署博客网站，通过localhost:4000访问，但若要能在外网访问，即部署到互联网上，那么就要借助github pages了。简言之，github pages既提供了域名(username.github.io)，也提供了主机(虚拟web服务器)，因此其他人可以通过域名访问该主机。而我们只需要把生成的静态文件同步到github的相应repository即可。</p>
+<ol>
+<li>注册github，并新建repository。如github的帐号名为username，则新建的repository的名称就必须设为username.github.io。相应的个人博客网站的域名也就是username.github.io</li>
+<li>在终端执行<code>hexo generate</code>，将所有的博文生成html等静态文件，存放在blog的public/目录下。</li>
+<li><code>hexo deploy</code>部署<ol>
+<li>修改配置文件_config.yml定义部署的方式为git：<code>url</code>定义为username.github.io，deploy的<code>type</code>定义为git，新增<code>repo</code>定义为该git repository的地址，<code>branch</code>定义为master</li>
+<li>安装hexo-deployer-git，以支持git部署。</li>
+<li><code>hexo deploy</code>即可。若报错git还未设置email和name，需先设置好<code>git config --global user.email &quot;you@example.com&quot;</code>，<code>git config --global user.name &quot;Your Name&quot;</code></li>
+</ol>
+</li>
+<li>浏览器打开username.github.io即可</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://idiomer.github.io/2019/02/01/hexo博客搭建-ubuntu/" data-id="cjrloynni0004n8v8b5w0cg8b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/01/Hexo on Windows/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hexo on Windows</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/blog/" style="font-size: 20px;">blog</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/01/hexo博客搭建-ubuntu/">hexo博客搭建-ubuntu</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/01/Hexo on Windows/">Hexo on Windows</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/01/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/18/What-is-github-pages/">What is github pages?</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 zzftt<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
