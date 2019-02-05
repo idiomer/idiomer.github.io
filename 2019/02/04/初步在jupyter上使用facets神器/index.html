@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://github.com/PAIR-code/facets/raw/master/img/overview-census.png">
 <meta property="og:image" content="https://github.com/PAIR-code/facets/raw/master/img/dive-census.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/idiomer/idiomer.github.io/master/images/20190205_083042.png">
-<meta property="og:updated_time" content="2019-02-05T00:41:06.301Z">
+<meta property="og:updated_time" content="2019-02-05T08:36:47.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初步在jupyter上使用facets神器">
 <meta name="twitter:description" content="背景​    昨天在逛知乎的时候，偶然发现了facets这个可视化的神器。然后去web版体验了一下功能，非常棒：overview能快速对自己的数据集有一个快速且全面的了解，进而能快速地发现其中的异常数据；dive的功能更是炫丽，通过图表+缩放的逆天前端实现，直观快速地了解多维度组合下的特征区分度。OK! Talk is cheat, show me the picture  ​    虽然web版">
@@ -113,6 +113,11 @@
 <li>之后按这个demo的notebook，换成自己的数据集即可</li>
 </ol>
 </li>
+<li>优化：将facest_overview/python/*.py复制到/usr/lib/python3.5/facets/（require mkdir）里面去<ol>
+<li>这样就不需要sys.argv.append(‘./python’)了</li>
+<li>notebook demo中的import语句，将<code>from generic_feature_statistics_generator import GenericFeatureStatisticsGenerator</code> 改成<code>from facets.generic_feature_statistics_generator import GenericFeatureStatisticsGenerator</code></li>
+</ol>
+</li>
 </ol>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://github.com/PAIR-code/facets" target="_blank" rel="noopener">https://github.com/PAIR-code/facets</a></li>
@@ -124,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://idiomer.github.io/2019/02/04/初步在jupyter上使用facets神器/" data-id="cjrr1ggh60008psv84qi6st1d" class="article-share-link">Share</a>
+      <a data-url="http://idiomer.github.io/2019/02/04/初步在jupyter上使用facets神器/" data-id="cjrrig2pe000bsgv8p2nhoskk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/facets/">facets</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jupyter/">jupyter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
