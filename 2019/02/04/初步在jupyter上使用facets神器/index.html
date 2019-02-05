@@ -7,21 +7,21 @@
   
   <title>初步在jupyter上使用facets神器 | Start It</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景​    昨天在逛知乎的时候，偶然发现了facets这个可视化的神器。然后去web版体验了一下功能，非常棒：overview能快速对自己的数据集有一个快速且全面的了解，进而能快速地发现其中的异常数据；dive的功能更是炫丽，通过图表+缩放的逆天前端实现，直观快速地了解多维度组合下的特征区分度。  ​    虽然web版可以直接使用，但是考虑到数据安全性的关系，特别是企业业务的关键数据，在自己的">
+  <meta name="description" content="背景​    昨天在逛知乎的时候，偶然发现了facets这个可视化的神器。然后去web版体验了一下功能，非常棒：overview能快速对自己的数据集有一个快速且全面的了解，进而能快速地发现其中的异常数据；dive的功能更是炫丽，通过图表+缩放的逆天前端实现，直观快速地了解多维度组合下的特征区分度。OK! Talk is cheat, show me the picture  ​    虽然web版">
 <meta name="keywords" content="jupyter,数据分析,facets">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初步在jupyter上使用facets神器">
 <meta property="og:url" content="http://idiomer.github.io/2019/02/04/初步在jupyter上使用facets神器/index.html">
 <meta property="og:site_name" content="Start It">
-<meta property="og:description" content="背景​    昨天在逛知乎的时候，偶然发现了facets这个可视化的神器。然后去web版体验了一下功能，非常棒：overview能快速对自己的数据集有一个快速且全面的了解，进而能快速地发现其中的异常数据；dive的功能更是炫丽，通过图表+缩放的逆天前端实现，直观快速地了解多维度组合下的特征区分度。  ​    虽然web版可以直接使用，但是考虑到数据安全性的关系，特别是企业业务的关键数据，在自己的">
+<meta property="og:description" content="背景​    昨天在逛知乎的时候，偶然发现了facets这个可视化的神器。然后去web版体验了一下功能，非常棒：overview能快速对自己的数据集有一个快速且全面的了解，进而能快速地发现其中的异常数据；dive的功能更是炫丽，通过图表+缩放的逆天前端实现，直观快速地了解多维度组合下的特征区分度。OK! Talk is cheat, show me the picture  ​    虽然web版">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://github.com/PAIR-code/facets/raw/master/img/overview-census.png">
 <meta property="og:image" content="https://github.com/PAIR-code/facets/raw/master/img/dive-census.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/idiomer/idiomer.github.io/master/images/20190205_083042.png">
-<meta property="og:updated_time" content="2019-02-05T00:37:37.651Z">
+<meta property="og:updated_time" content="2019-02-05T00:41:06.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初步在jupyter上使用facets神器">
-<meta name="twitter:description" content="背景​    昨天在逛知乎的时候，偶然发现了facets这个可视化的神器。然后去web版体验了一下功能，非常棒：overview能快速对自己的数据集有一个快速且全面的了解，进而能快速地发现其中的异常数据；dive的功能更是炫丽，通过图表+缩放的逆天前端实现，直观快速地了解多维度组合下的特征区分度。  ​    虽然web版可以直接使用，但是考虑到数据安全性的关系，特别是企业业务的关键数据，在自己的">
+<meta name="twitter:description" content="背景​    昨天在逛知乎的时候，偶然发现了facets这个可视化的神器。然后去web版体验了一下功能，非常棒：overview能快速对自己的数据集有一个快速且全面的了解，进而能快速地发现其中的异常数据；dive的功能更是炫丽，通过图表+缩放的逆天前端实现，直观快速地了解多维度组合下的特征区分度。OK! Talk is cheat, show me the picture  ​    虽然web版">
 <meta name="twitter:image" content="https://github.com/PAIR-code/facets/raw/master/img/overview-census.png">
   
     <link rel="alternate" href="/atom.xml" title="Start It" type="application/atom+xml">
@@ -95,7 +95,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>​    昨天在逛<a href="https://www.zhihu.com/question/27098881" target="_blank" rel="noopener">知乎</a>的时候，偶然发现了facets这个可视化的神器。然后去<a href="https://pair-code.github.io/facets/" target="_blank" rel="noopener">web版</a>体验了一下功能，非常棒：overview能快速对自己的数据集有一个快速且全面的了解，进而能快速地发现其中的异常数据；dive的功能更是炫丽，通过图表+缩放的逆天前端实现，直观快速地了解多维度组合下的特征区分度。<img src="https://github.com/PAIR-code/facets/raw/master/img/overview-census.png" alt="facets overview"></p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>​    昨天在逛<a href="https://www.zhihu.com/question/27098881" target="_blank" rel="noopener">知乎</a>的时候，偶然发现了facets这个可视化的神器。然后去<a href="https://pair-code.github.io/facets/" target="_blank" rel="noopener">web版</a>体验了一下功能，非常棒：overview能快速对自己的数据集有一个快速且全面的了解，进而能快速地发现其中的异常数据；dive的功能更是炫丽，通过图表+缩放的逆天前端实现，直观快速地了解多维度组合下的特征区分度。OK! Talk is cheat, show me the picture<img src="https://github.com/PAIR-code/facets/raw/master/img/overview-census.png" alt="facets overview"></p>
 <p><img src="https://github.com/PAIR-code/facets/raw/master/img/dive-census.png" alt="facets dive"></p>
 <p>​    虽然web版可以直接使用，但是考虑到数据安全性的关系，特别是企业业务的关键数据，在自己的jupyter上搭建facets的可控性是最好的，并且可以灵活处理数据。</p>
 <h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><p>前提：安装好了jupyter</p>
@@ -104,7 +104,7 @@
 <li>安装facets：<ol>
 <li>git clone <a href="https://github.com/PAIR-code/facets" target="_blank" rel="noopener">https://github.com/PAIR-code/facets</a></li>
 <li>cd facets/</li>
-<li>jupyter nbextension install facets-dist/ –user</li>
+<li>jupyter nbextension install facets-dist/ --user</li>
 </ol>
 </li>
 <li>测试是否正常运行<ol>
@@ -124,7 +124,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://idiomer.github.io/2019/02/04/初步在jupyter上使用facets神器/" data-id="cjrr1byg700093cv8mkyj0jzr" class="article-share-link">Share</a>
+      <a data-url="http://idiomer.github.io/2019/02/04/初步在jupyter上使用facets神器/" data-id="cjrr1ggh60008psv84qi6st1d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/facets/">facets</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jupyter/">jupyter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li></ul>
