@@ -59,7 +59,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-10-18 23:07:20',
+  postUpdate: '2024-10-18 23:26:59',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -306,7 +306,7 @@
                 return all_data
             } else {
                 console.log('请求最新数据');
-                const jsonUrl = 'http://dreamyai.fun:3141/file/'+index_code+'_dateclose_latest.json';
+                const jsonUrl = 'https://dreamyai.fun/file/'+index_code+'_dateclose_latest.json';
                 const resp = await fetch(jsonUrl);
                 const all_data = await resp.json();
                 // 缓存数据和时间
