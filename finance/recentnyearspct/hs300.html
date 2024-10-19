@@ -54,12 +54,12 @@
   configTitle: '技术小站',
   title: '技术小站',
   postAI: '',
-  pageFillDescription: '指数当前点位处于近年的位置百分比沪深全部近年近年近年近年近月近月近月日期近天收盘价近年百分位近年百分位平均百分位更多指数沪深中证中证红利证券公司小时以毫秒为单位检查缓存是否存在且未过期使用缓存数据请求最新数据缓存数据和时间已缓存最新数据获取文件数据创建表格切换底色为更新渲染图表',
+  pageFillDescription: '指数当前点位处于近年的位置百分比沪深全部近年近年近年近年近月近月近月日期近天收盘价近年百分位近年百分位平均百分位更多指数沪深中证中证红利证券公司小时以毫秒为单位检查缓存是否存在且未过期使用缓存数据请求最新数据缓存数据和时间已缓存最新数据获取文件数据创建表格创建主图近年百分位近年百分位下方的图下方的图上方的图筛选按钮逻辑切换底色为更新渲染图表',
   isPost: false,
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-10-18 23:27:30',
+  postUpdate: '2024-10-19 11:54:34',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -203,7 +203,7 @@
         #mainChart {
             display: block;
             width: 100%;
-            height: 100%;
+            min-height: 60vh;
         }
         table {
             width: 100%;
@@ -344,10 +344,44 @@
                 tbody.appendChild(row);
             });
 
+            // 创建主图
             const is_high = (ctx, value, offset) => recent_avg_pct[ctx.p0DataIndex+offset]>=95 && recent_avg_pct[ctx.p1DataIndex+offset]>=95 ? value : undefined;
             const is_low = (ctx, value, offset) => recent_avg_pct[ctx.p0DataIndex+offset]<=10 && recent_avg_pct[ctx.p1DataIndex+offset]<=10 ? value : undefined;
+            const skipped = (ctx, value) => ctx.p0.raw==50 && ctx.p1.raw==50 ? value : undefined;
+            // 注册自定义插件来绘制鼠标悬停时的垂直线
+            Chart.register({
+                id: 'verticalLine',
+                afterDraw(chart, args, options) {
+                    if (chart.tooltip._active && chart.tooltip._active.length) {
+                        // 获取激活的tooltip（即鼠标悬停处的点）
+                        const activePoint = chart.tooltip._active[0];
+                        const {ctx} = chart;
 
-            // 创建主图
+                        // 保存当前的绘图状态
+                        ctx.save();
+
+                        // 绘制垂直线
+                        ctx.beginPath();
+                        ctx.moveTo(activePoint.element.x, chart.chartArea.top);
+                        ctx.lineTo(activePoint.element.x, chart.chartArea.bottom);
+                        ctx.lineWidth = 1;
+                        ctx.strokeStyle = '#888888'; // 可以自定义颜色和透明度
+                        ctx.stroke();
+
+                        // 绘制水平线
+                        ctx.beginPath();
+                        ctx.moveTo(chart.chartArea.left, activePoint.element.y);
+                        ctx.lineTo(chart.chartArea.right, activePoint.element.y);
+                        ctx.lineWidth = 1;
+                        ctx.strokeStyle = '#888888'; // 可以自定义颜色和透明度
+                        ctx.stroke();
+
+                        // 恢复之前保存的绘图状态
+                        ctx.restore();
+                    }
+                }
+            });
+
             const ctxMain = document.getElementById('mainChart').getContext('2d');
             const mainChart = new Chart(ctxMain, {
                 type: 'line',
@@ -362,7 +396,7 @@
                         pointStyle: false,
                         fill: true,
                         yAxisID: 'y',
-                        segment: {borderColor: ctx => is_high(ctx, 'rgb(255,0,0)', 0) || is_low(ctx, 'rgb(0,255,0)', 0)}
+                        segment: {borderColor: ctx => is_high(ctx, 'rgb(255,0,0)', 0) || is_low(ctx, 'rgb(0,255,0)', 0)},
                     },{
                         order: 1,
                         label: '近2年百分位',
@@ -372,6 +406,7 @@
                         pointStyle: false,
                         fill: true,
                         yAxisID: 'y2',
+                        segment: {borderColor: ctx => skipped(ctx, 'rgba(0, 0, 0, 0.2)'), borderDash: ctx => skipped(ctx, [6, 6]), backgroundColor: ctx => skipped(ctx, 'rgba(255,255,255,0.0)'),},
                     },{
                         order: 2,
                         label: '近5年百分位',
@@ -381,6 +416,7 @@
                         pointStyle: false,
                         fill: true,
                         yAxisID: 'y5',
+                        segment: {borderColor: ctx => skipped(ctx, 'rgba(0, 0, 0, 0.2)'), borderDash: ctx => skipped(ctx, [6, 6]), backgroundColor: ctx => skipped(ctx, 'rgba(255,255,255,0.0)'),},
                     },]
                 },
                 options: {
@@ -394,7 +430,7 @@
                         tooltip: {
                             mode: 'index',
                             intersect: false,
-                        },
+                        }
                     },
                     scales: {
                         x: {
@@ -426,7 +462,7 @@
                 if (event.target.classList.contains('chart-action')) {
                     const ele_id = event.target.id;
                     const ndays = id2days[ele_id];
-                    const offset = datas[0].length - ndays;
+                    const offset = Math.max(0, datas[0].length - ndays);
 
                     Array.from(document.getElementsByClassName('chart-action')).forEach(ele => {
                         if (ele.classList.contains('active')) {ele.classList.remove('active');}
