@@ -54,12 +54,12 @@
   configTitle: '技术小站',
   title: '技术小站',
   postAI: '',
-  pageFillDescription: '主流指数当前点位处于近年的百分位指数当前点位近年百分位近年百分位近年平均百分位离近年最高点还需涨离近年最低点还需跌小时以毫秒为单位检查缓存是否存在且未过期缓存数据和时间',
+  pageFillDescription: '主流指数当前点位处于近年的百分位指数当前点位近年平均百分位离近年最高点还需涨离近年最低点还需跌小时以毫秒为单位检查缓存是否存在且未过期缓存数据和时间',
   isPost: false,
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-10-20 20:35:13',
+  postUpdate: '2024-10-21 09:45:13',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -205,8 +205,6 @@
             <tr>
                 <th>指数</th>
                 <th>当前<br>点位</th>
-                <th>近2年<br>百分位</th>
-                <th>近5年<br>百分位</th>
                 <th>近2/5年<br>平均<br>百分位</th>
                 <th>离近5年<br>最高点<br>还需涨</th>
                 <th>离近5年<br>最低点<br>还需跌</th>
@@ -251,11 +249,15 @@
                 row.innerHTML = `
                     <th> <a href="/finance/recentnyearspct/stockindex.html#${item.symbol}">${item.name}</a> <br> (${item.date})</th>
                     <td style="text-align:center;"> ${item.close} </td>
-                    <td style="text-align:center;"> ${item.recent_2y_pct}% </td>
-                    <td style="text-align:center;"> ${item.recent_5y_pct}% </td>
-                    <td style="text-align:center;"> <span style="color:${avg_pct_color}">${avg_pct}%</span> </td>
-                    <td style="text-align:center;"> <span style="color:red; font-size: 1.5em;">↑</span> +${item.highest_pct}% </td>
-                    <td style="text-align:center;"> <span style="color:green; font-size: 1.5em;">↓</span> ${item.lowest_pct}% </td>
+                    <td style="text-align:center;"> 
+                        <span style="color:rgba(128,128,128,0.3)">${item.recent_2y_pct}%</span>
+                        <br>
+                        <span style="color:${avg_pct_color}">${avg_pct}%</span>
+                        <br>
+                        <span style="color:rgba(128,128,128,0.3)">${item.recent_5y_pct}%</span>
+                    </td>
+                    <td style="text-align:center;"> <span style="color:red; font-size: 1.2em;">↑</span> +${item.highest_pct}% </td>
+                    <td style="text-align:center;"> <span style="color:green; font-size: 1.2em;">↓</span> ${item.lowest_pct}% </td>
                 `;
                 tbody.appendChild(row);
             });
