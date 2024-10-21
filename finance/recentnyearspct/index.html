@@ -54,12 +54,12 @@
   configTitle: '技术小站',
   title: '技术小站',
   postAI: '',
-  pageFillDescription: '主流指数当前点位处于近年的百分位指数当前点位近年平均百分位离近年最高点还需涨离近年最低点还需跌清除本地缓存并刷新页面小时以毫秒为单位检查缓存是否存在且未过期缓存数据和时间',
+  pageFillDescription: '主流指数当前点位处于近年的百分位指数当前点位近年平均百分位离近年最高点还需涨离近年最低点还需跌清除本地缓存并刷新页面小时以毫秒为单位检查缓存是否存在且未过期缓存数据和时间中证红利策略类证券公司行业类',
   isPost: false,
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-10-21 17:36:56',
+  postUpdate: '2024-10-21 17:49:22',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -253,6 +253,15 @@
                 const row = document.createElement('tr');
                 const avg_pct = ((item.recent_2y_pct+item.recent_5y_pct)/2).toFixed(2);
                 const avg_pct_color = avg_pct<15 ? 'green' : (avg_pct<30 ? 'teal' : (avg_pct>85 ? 'red': (avg_pct>70?'OrangeRed':'blue')));
+                if(item.name=="中证红利"){
+                    const help_row = document.createElement('tr');
+                    help_row.innerHTML = `<td><div style="color:gray;">策略类</div><td>`;
+                    tbody.appendChild(help_row);
+                } else if (item.name=="证券公司"){
+                    const help_row = document.createElement('tr');
+                    help_row.innerHTML = `<td><div style="color:gray;">行业类</div><td>`;
+                    tbody.appendChild(help_row);
+                }
                 row.innerHTML = `
                     <th>
                         <a href="/finance/recentnyearspct/stockindex.html#${item.symbol}">${item.name}</a>
