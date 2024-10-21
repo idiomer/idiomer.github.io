@@ -54,12 +54,12 @@
   configTitle: '技术小站',
   title: '技术小站',
   postAI: '',
-  pageFillDescription: '指数当前点位处于近年的位置百分比中证全指沪深中证中证创业板指科创中证红利证券公司中证医疗全部近年近年近年近年近月近月近月日期近天收盘价近年百分位近年百分位平均百分位离年高点还需涨离年低点还需跌小时以毫秒为单位检查缓存是否存在且未过期使用缓存数据请求最新数据缓存数据和时间已缓存最新数据获取文件数据创建表格创建主图近年百分位近年百分位下方的图下方的图上方的图重置按钮切换底色为筛选按钮逻辑切换底色为更新渲染图表选择指数中证全指',
+  pageFillDescription: '指数当前点位处于近年的位置百分比中证全指沪深中证中证创业板指科创中证红利价值低波动证券公司中证消费食品饮料医药中证医疗全部近年近年近年近年近月近月近月日期近天收盘价近年百分位近年百分位平均百分位离年高点还需涨离年低点还需跌小时以毫秒为单位检查缓存是否存在且未过期使用缓存数据请求最新数据缓存数据和时间已缓存最新数据获取文件数据创建表格创建主图近年百分位近年百分位下方的图下方的图上方的图重置按钮切换底色为筛选按钮逻辑切换底色为更新渲染图表选择指数中证全指',
   isPost: false,
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-10-21 09:47:19',
+  postUpdate: '2024-10-21 17:35:27',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -252,7 +252,8 @@
     </style>
 </head>
 <body>
-    <div class="block" style="text-align:center; margin:0; border:0;">
+    <div class="control" style="text-align:center; margin:0; border:0;">
+        <a href="/finance/recentnyearspct/" style="border:0;">🏠</a>
         <div class="select is-rounded is-small" id="index_selector">
             <select id="indexSelect">
                 <!-- 宽基 -->
@@ -264,8 +265,13 @@
                 <option value="sh000688">科创50</option>
                 <!-- 策略 -->
                 <option value="sh000922">中证红利</option>
+                <option value="sh000919">300价值</option>
+                <option value="csi930782">500低波动</option>
                 <!-- 行业 -->
                 <option value="sz399975">证券公司</option>
+                <option value="sh000932">中证消费</option>
+                <option value="sh000807">食品饮料</option>
+                <option value="sh000978">医药100</option>
                 <option value="sz399989">中证医疗</option>
             </select>
         </div>
@@ -335,7 +341,7 @@
             }
         }
         async function plot_index_data(index_code, index_name){
-            document.getElementById('index_selector').classList.add('is-loading'); await sleep(100);
+            document.getElementById('index_selector').classList.add('is-loading'); await sleep(200);
 
             // 获取JSON文件数据
             const all_data = await fetch_index_data(index_code);
