@@ -54,12 +54,12 @@
   configTitle: '技术小站',
   title: '技术小站',
   postAI: '',
-  pageFillDescription: '实时看盘减去昨日成交额今日成交额亿亿分钟后停止',
+  pageFillDescription: '实时看盘减去大盘今日成交额昨日成交额今日成交额大盘今日资金流向主力净流入超大单净流入大单净流入中单净流入小单净流入亿亿亿亿亿亿亿分钟后停止',
   isPost: false,
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-11-07 13:30:44',
+  postUpdate: '2024-11-12 14:38:52',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -263,13 +263,27 @@
 
         <div class="card" id="zzqz-card">
             <div class="card-header">
-                <p><a target="_blank" rel="noopener" href="https://quote.eastmoney.com/zs000985.html" id="name"></a></p>
+                <p><a target="_blank" rel="noopener" href="https://quote.eastmoney.com/zs000985.html" id="name">大盘今日成交额</a></p>
             </div>
             <div class="card-content">
                 <div>昨日成交额：<span id="yest_amount"></span></div>    
                 <div>今日成交额：<span id="amount"></span></div>
             </div>
         </div>
+
+        <div class="card" id="dp-zjlx">
+            <div class="card-header">
+                <p><a target="_blank" rel="noopener" href="https://data.eastmoney.com/zjlx/dpzjlx.html" id="name">大盘今日资金流向</a></p>
+            </div>
+            <div class="card-content">
+                <div>主力净流入：<span id="zhuli"></span></div>    
+                <div>超大单净流入：<span id="chaodadan"></span></div>
+                <div>大单净流入：<span id="dadan"></span></div>
+                <div>中单净流入：<span id="zhongdan"></span></div>
+                <div>小单净流入：<span id="xiaodan"></span></div>
+            </div>
+        </div>
+
     </div>
 
 
@@ -292,6 +306,13 @@
             const json_data = await resp.json();
             return json_data
         }
+        async function fetch_dpzjlx() {
+            const jsonUrl = 'https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?lmt=0&klt=1&fields1=f1,f2,f3,f7&fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61,f62,f63,f64,f65&secid=1.000001&secid2=0.399001';
+            const resp = await fetch(jsonUrl, {Referer: "https://data.eastmoney.com/zjlx/dpzjlx.html"});
+            const json_data = await resp.json();
+            return json_data
+        }
+
         async function fill_UDI_info() {
             const json_data = await fetch_UDI_data();
             target_card = document.getElementById('UDI-card');
@@ -345,20 +366,31 @@
         async function fill_all_amount_info() {
             const json_data = await fetch_all_amount_data();
             target_card = document.getElementById('zzqz-card');
-            target_card.querySelector('#name').innerHTML = json_data.data.name;
             target_card.querySelector('#yest_amount').innerHTML = (parseFloat(json_data.data.klines[0].split(',')[6])/10000/10000).toFixed(2)+"亿";
             target_card.querySelector('#amount').innerHTML = (parseFloat(json_data.data.klines[1].split(',')[6])/10000/10000).toFixed(2)+"亿";
+        }
+        async function fill_dpzjlx_info() {
+            const json_data = await fetch_dpzjlx();
+            target_card = document.getElementById('dp-zjlx');
+            const data = json_data.data.klines.at(-1).split(',');
+            target_card.querySelector('#zhuli').innerHTML = (parseFloat(data[1]) / 1e8).toFixed(2) + '亿';
+            target_card.querySelector('#chaodadan').innerHTML = (parseFloat(data[5]) / 1e8).toFixed(2) + '亿';
+            target_card.querySelector('#dadan').innerHTML = (parseFloat(data[4]) / 1e8).toFixed(2) + '亿';
+            target_card.querySelector('#zhongdan').innerHTML = (parseFloat(data[3]) / 1e8).toFixed(2) + '亿';
+            target_card.querySelector('#xiaodan').innerHTML = (parseFloat(data[2]) / 1e8).toFixed(2) + '亿';
         }
 
         function main(){
             const inter_id_1 = setInterval(fill_UDI_info, 10*1000); fill_UDI_info();
             const inter_id_2 = setInterval(fill_USDCNH_info, 10*1000); fill_USDCNH_info();
             const inter_id_3 = setInterval(fill_all_amount_info, 10*1000); fill_all_amount_info();
+            const inter_id_4 = setInterval(fill_dpzjlx_info, 10*1000); fill_dpzjlx_info();
 
             setTimeout(() => {
                 clearInterval(inter_id_1);
                 clearInterval(inter_id_2);
                 clearInterval(inter_id_3);
+                clearInterval(inter_id_4);
             }, 30*60*1000); // 30分钟后停止
         }
 
