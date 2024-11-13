@@ -54,12 +54,12 @@
   configTitle: '技术小站',
   title: '技术小站',
   postAI: '',
-  pageFillDescription: '实时看盘减去大盘今日成交额昨日成交额今日成交额大盘今日资金流向主力净流入超大单净流入大单净流入中单净流入小单净流入亿亿亿亿亿亿亿分钟后停止',
+  pageFillDescription: '实时看盘减去大盘今日成交额昨日成交额今日成交额大盘今日资金流向主力净流入超大单净流入大单净流入中单净流入小单净流入亿亿亿分钟后停止',
   isPost: false,
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-11-12 14:38:52',
+  postUpdate: '2024-11-13 14:05:03',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -373,11 +373,14 @@
             const json_data = await fetch_dpzjlx();
             target_card = document.getElementById('dp-zjlx');
             const data = json_data.data.klines.at(-1).split(',');
-            target_card.querySelector('#zhuli').innerHTML = (parseFloat(data[1]) / 1e8).toFixed(2) + '亿';
-            target_card.querySelector('#chaodadan').innerHTML = (parseFloat(data[5]) / 1e8).toFixed(2) + '亿';
-            target_card.querySelector('#dadan').innerHTML = (parseFloat(data[4]) / 1e8).toFixed(2) + '亿';
-            target_card.querySelector('#zhongdan').innerHTML = (parseFloat(data[3]) / 1e8).toFixed(2) + '亿';
-            target_card.querySelector('#xiaodan').innerHTML = (parseFloat(data[2]) / 1e8).toFixed(2) + '亿';
+
+            const id_list = ['#zhuli','#chaodadan','#dadan','#zhongdan','#xiaodan'];
+            const idx_list = [1, 5, 4, 3, 2];
+            id_list.forEach((ele_id, index) => {
+                const idx = idx_list[index];
+                target_card.querySelector(ele_id).innerHTML = (parseFloat(data[idx]) / 1e8).toFixed(2) + '亿';
+                target_card.querySelector(ele_id).style.color = parseFloat(data[idx])>0 ? 'red' : 'green';
+            });
         }
 
         function main(){
