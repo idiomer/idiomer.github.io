@@ -1,3 +1,3 @@
-var posts=["p/Bash常用配置/","p/HexoBlog01/","p/HexoBlog02/","p/Hive和Spark常用代码片段/","p/Python与Jupyter的常用代码片段/","p/跨平台框架React Native(Expo)学习笔记/","p/ResNet-18的torch实现源码解读/","p/Superset数据看板平台搭建/","p/VSCode常用插件/","p/docker教程/","p/windows永久暂停更新设置/","p/免费翻译API/","p/ollama使用教程/","p/python中的图片基础操作/","p/用CNCLIP模型做内容理解/"];function toRandomPost(){
+var posts=["p/Bash常用配置/","p/HexoBlog01/","p/HexoBlog02/","p/Hive和Spark常用代码片段/","p/Python与Jupyter的常用代码片段/","p/跨平台框架React Native(Expo)学习笔记/","p/ResNet-18的torch实现源码解读/","p/Superset数据看板平台搭建/","p/VSCode常用插件/","p/docker教程/","p/ollama使用教程/","p/python中的图片基础操作/","p/windows永久暂停更新设置/","p/免费翻译API/","p/用CNCLIP模型做内容理解/"];function toRandomPost(){
     pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
   };
