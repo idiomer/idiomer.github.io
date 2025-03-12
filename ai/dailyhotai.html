@@ -54,12 +54,12 @@
   configTitle: '技术小站',
   title: '技术小站',
   postAI: '',
-  pageFillDescription: '新闻卡片展示判断浏览器是还是手机从外部获取数据',
+  pageFillDescription: '新闻卡片展示判断浏览器是还是手机从外部获取数据在这里写你的代码页面加载完成',
   isPost: false,
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2025-03-12 17:09:07',
+  postUpdate: '2025-03-12 17:45:08',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -302,8 +302,13 @@
                 container.appendChild(card);
             });                    
         }
+        
+        window.onload = function() {
+            // 在这里写你的代码
+            console.log("页面加载完成！");
+            amain();
+        };
 
-        amain();
     </script>
 
 </body>
