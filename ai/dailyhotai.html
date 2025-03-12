@@ -54,12 +54,12 @@
   configTitle: '技术小站',
   title: '技术小站',
   postAI: '',
-  pageFillDescription: '新闻卡片展示判断浏览器是还是手机从外部获取数据等待在这里写你的代码页面加载完成',
+  pageFillDescription: '新闻卡片展示剔除开头的元素判断浏览器是还是手机从外部获取数据',
   isPost: false,
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2025-03-12 18:07:39',
+  postUpdate: '2025-03-12 18:26:56',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -253,6 +253,8 @@
 
     <script>
         function getRandomCover(covers) {
+            // 剔除https://inews.gtimg.com开头的元素URL_ADDRESS
+            covers = covers.filter(cover => !cover.startsWith('https://inews.gtimg.com'));
             return covers[Math.floor(Math.random() * covers.length)];
         }
 
@@ -265,6 +267,8 @@
 
             const cover = document.createElement('img');
             cover.src = getRandomCover(news.covers);
+            cover.crossorigin = "anonymous"
+            cover.alt = "no cover image"
             card.appendChild(cover);
 
             const content = document.createElement('div');
@@ -287,10 +291,6 @@
             return card;
         }
 
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
         async function amain() {
             // 从外部获取数据
             const url = "https://textdb.online/dailyhotaijsonstoreall";
@@ -301,22 +301,13 @@
                 .catch(error => console.error('Error fetching data:', error));
 
             const container = document.getElementById('news-container');
-            // newsData.forEach((news) => {
-            //     const card = createNewsCard(news);
-            //     container.appendChild(card);
-            // });
-            for (let i = 0; i < newsData.length; i++) {
-                const card = createNewsCard(newsData[i]);
+            newsData.forEach((news) => {
+                const card = createNewsCard(news);
                 container.appendChild(card);
-                await sleep(100); // 等待100ms
-            }
+            });
         }
 
-        window.onload = function() {
-            // 在这里写你的代码
-            console.log("页面加载完成！");
-            amain();
-        };
+        amain();
     </script>
 
 </body>
