@@ -54,12 +54,12 @@
   configTitle: '技术小站',
   title: '技术小站',
   postAI: '',
-  pageFillDescription: '新闻卡片展示剔除开头的元素判断浏览器是还是手机从外部获取数据',
+  pageFillDescription: '新闻卡片展示剔除开头的元素如果数组为空则返回默认封面判断浏览器是还是手机从外部获取数据',
   isPost: false,
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2025-03-12 18:29:24',
+  postUpdate: '2025-03-12 18:34:15',
   postMainColor: '',
 }</script><noscript><style type="text/css">
   #nav {
@@ -254,8 +254,13 @@
     <script>
         function getRandomCover(covers) {
             // 剔除https://inews.gtimg.com开头的元素URL_ADDRESS
-            // covers = covers.filter(cover => !cover.startsWith('https://inews.gtimg.com'));
-            return covers[Math.floor(Math.random() * covers.length)];
+            covers = covers.filter(cover => !cover.startsWith('https://inews.gtimg.com'));
+            // 如果covers数组为空，则返回默认封面URL
+            if (covers.length === 0) {
+                return 'https://p3-sign.toutiaoimg.com/mosaic-legacy/2b28f000370774e5fabc5~tplv-tt-shrink:960:540.jpeg?_iz=30575&from=sign_default&lk3s=8d617dac&x-expires=1744329600&x-signature=w7PF2P9C3Sei2q34QFhtQ8e2fjE%3D'
+            } else {
+                return covers[Math.floor(Math.random() * covers.length)];
+            }
         }
 
         function createNewsCard(news) {
