@@ -1,3 +1,3 @@
-var posts=["p/Bash常用配置/","p/HexoBlog01/","p/HexoBlog02/","p/Hive和Spark常用代码片段/","p/Multi-Head Attention理解和PyTorch实现/","p/跨平台框架React Native(Expo)学习笔记/","p/Superset数据看板平台搭建/","p/VSCode常用插件/","p/ollama使用教程/","p/ResNet-18的torch实现源码解读/","p/onnx和模型量化.md/","p/免费翻译API/","p/python中的图片基础操作/","p/用CNCLIP模型做内容理解/","p/深度学习的归一化层/","p/自建RustDesk远程桌面服务/","p/docker教程/","p/windows永久暂停更新设置/","p/Python与Jupyter的常用代码片段/"];function toRandomPost(){
+var posts=["p/Bash常用配置/","p/HexoBlog02/","p/Hive和Spark常用代码片段/","p/Multi-Head Attention理解和PyTorch实现/","p/HexoBlog01/","p/跨平台框架React Native(Expo)学习笔记/","p/Python与Jupyter的常用代码片段/","p/ResNet-18的torch实现源码解读/","p/VSCode常用插件/","p/Superset数据看板平台搭建/","p/onnx和模型量化.md/","p/ollama使用教程/","p/docker教程/","p/python中的图片基础操作/","p/windows永久暂停更新设置/","p/免费申请和自动续签https证书(acme.sh)/","p/免费翻译API/","p/深度学习的归一化层/","p/自建RustDesk远程桌面服务/","p/用CNCLIP模型做内容理解/"];function toRandomPost(){
     pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
   };
