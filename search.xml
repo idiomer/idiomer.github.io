@@ -361,6 +361,35 @@
     
     
     <entry>
+      <title>ResNet-18的torch实现源码解读</title>
+      <link href="/p/ResNet-18%E7%9A%84torch%E5%AE%9E%E7%8E%B0%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/"/>
+      <url>/p/ResNet-18%E7%9A%84torch%E5%AE%9E%E7%8E%B0%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/</url>
+      
+        <content type="html"><![CDATA[<h1 id="ResNet-18的torch实现源码解读"><a href="#ResNet-18的torch实现源码解读" class="headerlink" title="ResNet-18的torch实现源码解读"></a>ResNet-18的torch实现源码解读</h1><ul><li><p>Input: 3x224x224</p></li><li><p>Layer-0: conv1 + bn1 + relu + maxpool</p><ul><li>conv1: 3-&gt;64通道。上下左右补3像素，卷积核7x7，步长2像素(尺寸减半112x112)。没有偏置项</li><li>bn1+relu: 先批归一化，再激活</li><li>maxpool: 上下左右补1像素，池化核3x3，步长为2(尺寸再减半56x56)</li></ul></li><li><p>Layer-1: self._make_layer(block, 64, layers[0])</p><ol><li>BasicBlock-1<ul><li><p>conv1: 64-&gt;64通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 64-&gt;64通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸没变，因此直接相加即可(&#x3D;本Block的输入+bn2的输出)</p></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li><li>BasicBlock-2<ul><li><p>conv1: 64-&gt;64通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 64-&gt;64通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸没变，因此直接相加即可(&#x3D;本Block的输入+bn2的输出)</p></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li></ol></li><li><p>Layer-2: self._make_layer(block, 128, layers[1], stride&#x3D;2, dilate&#x3D;replace_stride_with_dilation[0])</p><ol><li><p>BasicBlock-1</p><ul><li><p>conv1: 64-&gt;128通道。上下左右补1像素，卷积核3x3，步长2像素(尺寸减半28x28)。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 128-&gt;128通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸变化，因此要将本Block的输入做1x1卷积后，使得和bn2的输出相同尺寸后，再相加)</p><ul><li>downsample<ul><li>对本Block的输入：64-&gt;128通道。做1x1卷积变换，步长2像素(尺寸减半28x28)。没有偏置项</li><li>批归一化</li></ul></li></ul></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li><li><p>BasicBlock-2</p><ul><li><p>conv1: 128-&gt;128通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 128-&gt;128通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸没变，因此直接相加即可(&#x3D;本Block的输入+bn2的输出)</p></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li></ol></li><li><p>Layer-3: self._make_layer(block, 256, layers[2], stride&#x3D;2, dilate&#x3D;replace_stride_with_dilation[1])</p><ol><li><p>BasicBlock-1</p><ul><li><p>conv1: 128-&gt;256通道。上下左右补1像素，卷积核3x3，步长2像素(尺寸减半14x14)。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 256-&gt;256通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸变化，因此要将本Block的输入做1x1卷积后，使得和bn2的输出相同尺寸后，再相加)</p><ul><li>downsample<ul><li>对本Block的输入：128-&gt;256通道。做1x1卷积变换，步长2像素(尺寸减半14x14)。没有偏置项</li><li>批归一化</li></ul></li></ul></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li><li><p>BasicBlock-2</p><ul><li><p>conv1: 256-&gt;256通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 256-&gt;256通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸没变，因此直接相加即可(&#x3D;本Block的输入+bn2的输出)</p></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li></ol></li><li><p>Layer-4: self._make_layer(block, 512, layers[3], stride&#x3D;2, dilate&#x3D;replace_stride_with_dilation[2])</p><ol><li><p>BasicBlock-1</p><ul><li><p>conv1: 256-&gt;512通道。上下左右补1像素，卷积核3x3，步长2像素(尺寸减半7x7)。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 512-&gt;512通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸变化，因此要将本Block的输入做1x1卷积后，使得和bn2的输出相同尺寸后，再相加)</p><ul><li>downsample<ul><li>对本Block的输入：256-&gt;512通道。做1x1卷积变换，步长2像素(尺寸减半7x7)。没有偏置项</li><li>批归一化</li></ul></li></ul></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li><li><p>BasicBlock-2</p><ul><li><p>conv1: 512-&gt;512通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 512-&gt;512通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸没变，因此直接相加即可(&#x3D;本Block的输入+bn2的输出)</p></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li></ol></li><li><p>Layer-fc: </p><ol><li>avgpool: nn.AdaptiveAvgPool2d((1, 1))保持通道数不变，将每个特征图平均池化为1x1尺寸</li><li>flatten: torch.flatten(x, 1) 从维度1开始往后flatten，也就是将shape从(bs, 512, 1, 1)——&gt;(bs, 512)</li><li>fc: 最后将512映射为num_classes维度</li></ol></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> pytorch </tag>
+            
+            <tag> resnet </tag>
+            
+            <tag> CNN </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>跨平台框架React Native(Expo)学习笔记</title>
       <link href="/p/%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%A1%86%E6%9E%B6React%20Native(Expo)%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
       <url>/p/%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%A1%86%E6%9E%B6React%20Native(Expo)%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
@@ -388,35 +417,6 @@
             <tag> iOS </tag>
             
             <tag> Web </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>ResNet-18的torch实现源码解读</title>
-      <link href="/p/ResNet-18%E7%9A%84torch%E5%AE%9E%E7%8E%B0%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/"/>
-      <url>/p/ResNet-18%E7%9A%84torch%E5%AE%9E%E7%8E%B0%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/</url>
-      
-        <content type="html"><![CDATA[<h1 id="ResNet-18的torch实现源码解读"><a href="#ResNet-18的torch实现源码解读" class="headerlink" title="ResNet-18的torch实现源码解读"></a>ResNet-18的torch实现源码解读</h1><ul><li><p>Input: 3x224x224</p></li><li><p>Layer-0: conv1 + bn1 + relu + maxpool</p><ul><li>conv1: 3-&gt;64通道。上下左右补3像素，卷积核7x7，步长2像素(尺寸减半112x112)。没有偏置项</li><li>bn1+relu: 先批归一化，再激活</li><li>maxpool: 上下左右补1像素，池化核3x3，步长为2(尺寸再减半56x56)</li></ul></li><li><p>Layer-1: self._make_layer(block, 64, layers[0])</p><ol><li>BasicBlock-1<ul><li><p>conv1: 64-&gt;64通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 64-&gt;64通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸没变，因此直接相加即可(&#x3D;本Block的输入+bn2的输出)</p></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li><li>BasicBlock-2<ul><li><p>conv1: 64-&gt;64通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 64-&gt;64通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸没变，因此直接相加即可(&#x3D;本Block的输入+bn2的输出)</p></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li></ol></li><li><p>Layer-2: self._make_layer(block, 128, layers[1], stride&#x3D;2, dilate&#x3D;replace_stride_with_dilation[0])</p><ol><li><p>BasicBlock-1</p><ul><li><p>conv1: 64-&gt;128通道。上下左右补1像素，卷积核3x3，步长2像素(尺寸减半28x28)。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 128-&gt;128通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸变化，因此要将本Block的输入做1x1卷积后，使得和bn2的输出相同尺寸后，再相加)</p><ul><li>downsample<ul><li>对本Block的输入：64-&gt;128通道。做1x1卷积变换，步长2像素(尺寸减半28x28)。没有偏置项</li><li>批归一化</li></ul></li></ul></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li><li><p>BasicBlock-2</p><ul><li><p>conv1: 128-&gt;128通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 128-&gt;128通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸没变，因此直接相加即可(&#x3D;本Block的输入+bn2的输出)</p></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li></ol></li><li><p>Layer-3: self._make_layer(block, 256, layers[2], stride&#x3D;2, dilate&#x3D;replace_stride_with_dilation[1])</p><ol><li><p>BasicBlock-1</p><ul><li><p>conv1: 128-&gt;256通道。上下左右补1像素，卷积核3x3，步长2像素(尺寸减半14x14)。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 256-&gt;256通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸变化，因此要将本Block的输入做1x1卷积后，使得和bn2的输出相同尺寸后，再相加)</p><ul><li>downsample<ul><li>对本Block的输入：128-&gt;256通道。做1x1卷积变换，步长2像素(尺寸减半14x14)。没有偏置项</li><li>批归一化</li></ul></li></ul></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li><li><p>BasicBlock-2</p><ul><li><p>conv1: 256-&gt;256通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 256-&gt;256通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸没变，因此直接相加即可(&#x3D;本Block的输入+bn2的输出)</p></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li></ol></li><li><p>Layer-4: self._make_layer(block, 512, layers[3], stride&#x3D;2, dilate&#x3D;replace_stride_with_dilation[2])</p><ol><li><p>BasicBlock-1</p><ul><li><p>conv1: 256-&gt;512通道。上下左右补1像素，卷积核3x3，步长2像素(尺寸减半7x7)。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 512-&gt;512通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸变化，因此要将本Block的输入做1x1卷积后，使得和bn2的输出相同尺寸后，再相加)</p><ul><li>downsample<ul><li>对本Block的输入：256-&gt;512通道。做1x1卷积变换，步长2像素(尺寸减半7x7)。没有偏置项</li><li>批归一化</li></ul></li></ul></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li><li><p>BasicBlock-2</p><ul><li><p>conv1: 512-&gt;512通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn1+relu: 先批归一化，再激活</p></li><li><p>conv2: 512-&gt;512通道。上下左右补1像素，卷积核3x3，步长1像素。没有偏置项</p></li><li><p>bn2: 批归一化</p></li><li><p>残差连接: 由于特征图尺寸没变，因此直接相加即可(&#x3D;本Block的输入+bn2的输出)</p></li><li><p>relu: 最后relu激活（先残差后激活）</p></li></ul></li></ol></li><li><p>Layer-fc: </p><ol><li>avgpool: nn.AdaptiveAvgPool2d((1, 1))保持通道数不变，将每个特征图平均池化为1x1尺寸</li><li>flatten: torch.flatten(x, 1) 从维度1开始往后flatten，也就是将shape从(bs, 512, 1, 1)——&gt;(bs, 512)</li><li>fc: 最后将512映射为num_classes维度</li></ol></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> pytorch </tag>
-            
-            <tag> resnet </tag>
-            
-            <tag> CNN </tag>
             
         </tags>
       
