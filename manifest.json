@@ -1,0 +1,17 @@
+{
+    "name": "我的PWA博客",
+    "short_name": "TT博客",
+    "description": "AllenTT的个人博客",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2196f3",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "favicon.ico",
+        "sizes": "32x32",
+        "type": "image/png"
+      }
+    ]
+}
