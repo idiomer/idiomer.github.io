@@ -1,9 +1,9 @@
 const CACHE_NAME = 'pwa-cache-v1';
 // 需要缓存的文件列表
 const urlsToCache = [
-  './',
-  './index.html',
-  './icon.png'
+  '/',
+  '/index.html',
+  '/icon.png'
   // 如果你有 css 或 js 文件，也加在这里
 ];
 
