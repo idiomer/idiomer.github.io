@@ -3,7 +3,14 @@ const CACHE_NAME = 'pwa-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/icon.png'
+  '/icon.png',
+  '/favicon.ico',
+  '/css/index.css',
+  '/js/utils.js',
+  '/js/main.js',
+  '/js/tw_cn.js',
+  '/js/search/local-search.js',
+  '/anzhiyu/random.js'
   // 如果你有 css 或 js 文件，也加在这里
 ];
 
